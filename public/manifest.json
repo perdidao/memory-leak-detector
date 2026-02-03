@@ -3,12 +3,12 @@
   "name": "Memory Leak Detector",
   "version": "1.0.0",
   "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "vite.svg",
-      "48": "vite.svg",
-      "128": "vite.svg"
-    }
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
   "permissions": [
     "scripting",
