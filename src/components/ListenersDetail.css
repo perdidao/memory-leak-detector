@@ -34,7 +34,8 @@
 
 .listener-card {
   padding: 8px;
-  background-color: var(--color-border);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
 }
 
 .listener-header {
@@ -47,17 +48,19 @@
 }
 
 .event-badge {
-  color: var(--color-title);
   font-size: 14px;
-  font-weight: 600;
+  color: var(--color-title);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: bold;
 }
 
 .count-badge {
   background: #ff6b6b;
-  color: var(--color-text);
-  padding: 5px 10px;
+  color: var(--color-title);
+  padding: 2px 6px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -76,21 +79,21 @@
 }
 
 .label {
-  font-size: 14px;
+  font-size: 10px;
   color: var(--color-text);
   font-weight: 500;
 }
 
 .target-selector {
   background: var(--color-border);
-  padding: 5px 10px;
+  padding: 2px 6px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 10px;
   color: #e83e8c;
 }
 
 .time-value {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--color-text);
 }
 

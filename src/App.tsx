@@ -37,6 +37,8 @@ function App() {
           .then((response) => {
             if (response?.ready) {
               setIsReady(true)
+              // Auto-start detection when popup opens
+              setTestsRunning(true)
             }
           })
           .catch(() => {
@@ -108,19 +110,6 @@ function App() {
       <header className="header">
         <h1>Memory Leak Detector</h1>
 
-        {
-          !testsRunning
-            ?
-              <button 
-                onClick={() => setTestsRunning(true)}
-                disabled={!isReady && !error}
-              >
-                Start detector
-              </button>
-            :
-              <></>
-        }
-
         {stats && (
           <p className="time-passed">{stats.timePassed}</p>
         )}
@@ -137,7 +126,7 @@ function App() {
       )}
       
       {testsRunning && !stats && isReady && (
-        <p className='status-message'>Initializing audit...</p>
+        <p className='status-message'>Initializing detection...</p>
       )}
 
       {stats && (
