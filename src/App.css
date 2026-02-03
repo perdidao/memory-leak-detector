@@ -1,0 +1,142 @@
+#root {
+  width: 100%;
+  min-width: 400px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid #007bff;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  width: 50%;
+
+  padding: 10px;
+  font-size: 12px;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab:hover {
+  cursor: pointer;
+}
+
+.tab:focus, .tab:active {
+  outline: none;
+}
+
+.tab.active {
+  background-color: #007bff;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.time-passed {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.listener-breakdown {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.listener-breakdown h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.breakdown-item:hover {
+  background: #e9ecef;
+}
+
+.event-type {
+  font-weight: 500;
+  color: #495057;
+}
+
+.event-count {
+  font-weight: bold;
+  color: #007bff;
+  background: #e7f3ff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #root {
+    min-width: 300px;
+    padding: 1rem;
+  }
+}
