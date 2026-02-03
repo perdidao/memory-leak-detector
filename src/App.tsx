@@ -62,8 +62,8 @@ function App() {
         // Send message to content script to start audit
         chrome.tabs.sendMessage(tabId, {
           type: 'START_MEMORY_AUDIT',
-          interval: 5,
-          threshold: 20
+          interval: 1,
+          threshold: 10
         })
       } else {
         // Stop audit
@@ -120,6 +120,10 @@ function App() {
             :
               <></>
         }
+
+        {stats && (
+          <p className="time-passed">{stats.timePassed}</p>
+        )}
       </header>
       
       {error && (
@@ -129,20 +133,11 @@ function App() {
       )}
       
       {!isReady && !error && (
-        <p style={{ marginTop: '20px', color: '#888' }}>Connecting to page...</p>
+        <p className='status-message'>Connecting to page...</p>
       )}
       
       {testsRunning && !stats && isReady && (
-        <p style={{ marginTop: '20px', color: '#888' }}>Initializing audit...</p>
-      )}
-
-
-      {testsRunning && (
-        <button 
-          onClick={() => setTestsRunning(false)}
-        >
-          Stop detector
-        </button>
+        <p className='status-message'>Initializing audit...</p>
       )}
 
       {stats && (
@@ -164,7 +159,6 @@ function App() {
 
           {activeTab === 'overview' && (
             <div className="stats-container">
-              <p className="time-passed">Time: {stats.timePassed}</p>
 
               <div className="stats-grid">
                 <div className="stat-card">
@@ -190,12 +184,12 @@ function App() {
 
                 <div className="stat-card">
                   <h3>Heap Size</h3>
-                  <p className="stat-value">{stats.heapSize}</p>
+                  <p className="stat-value stat-value--small">{stats.heapSize}</p>
                 </div>
 
                 <div className="stat-card">
                   <h3>Heap % of Limit</h3>
-                  <p className="stat-value">{stats.heapPercentage}</p>
+                  <p className="stat-value stat-value--small">{stats.heapPercentage}</p>
                 </div>
               </div>
 
