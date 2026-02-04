@@ -4,7 +4,7 @@ An **open source** Chrome extension to detect and monitor memory leaks in web pa
 
 > 🔓 **Open Source** - This extension is fully open source and its code is available to everyone. Contributions are welcome!
 > 
-> 🔒 **Privacy** - We don't collect, store, or transmit any user data. All analysis is done locally in your browser. See our [Privacy Policy](PRIVACY_EN.md).
+> 🔒 **Privacy** - We don't collect, store, or transmit any user data. All analysis is done locally in your browser. See our [Privacy Policy](PRIVACY.md).
 
 ## 🚀 Features
 
