@@ -34,11 +34,13 @@ The Memory Leak Detector extension works as follows:
 **We DO NOT modify web page content.**
 
 The extension only:
+
 - ✅ **Monitors** native JavaScript APIs (`addEventListener`, `setInterval`, etc.)
 - ✅ **Records** the usage of these APIs for audit purposes
 - ✅ **Displays** statistics in the extension popup
 
 The extension does **NOT**:
+
 - ❌ Modify page HTML
 - ❌ Change the behavior of page elements
 - ❌ Inject ads or additional content
@@ -49,20 +51,16 @@ The extension does **NOT**:
 
 The extension requests the following Chrome permissions:
 
-### `activeTab`
-Allows the extension to access the active tab when you click the extension icon. This is necessary to inject monitoring code into the page.
+### `host_permissions` (http://_/_ and https://_/_)
 
-### `scripting`
-Allows the extension to inject monitoring scripts into web pages. This is necessary to track event listeners, timers, and observers.
-
-### `host_permissions` (http://*/* and https://*/*)
-Allows the extension to work on all web pages you visit.
+Allows the extension to inject monitoring scripts into web pages you visit. This is necessary to track event listeners, timers, and observers across all websites where you want to detect memory leaks.
 
 **Important**: These permissions are used exclusively for memory analysis functionality. No data is collected or transmitted.
 
 ## Open Source
 
 This extension is **100% open source**. You can:
+
 - Review all source code
 - Verify there is no data collection
 - Audit the extension yourself
@@ -73,6 +71,7 @@ The code is publicly available and can be inspected by anyone.
 ## Policy Compliance
 
 This extension is in full compliance with:
+
 - Chrome Web Store Privacy Policies
 - GDPR (General Data Protection Regulation)
 - LGPD (Lei Geral de Proteção de Dados)

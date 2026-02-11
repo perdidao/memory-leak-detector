@@ -4,8 +4,8 @@ import type { MemoryStats } from './services/detectMemoryLeaks'
 import ListenersDetail from './components/ListenersDetail'
 
 interface ChromeMessage {
-  type: string;
-  stats?: MemoryStats;
+  type: string
+  stats?: MemoryStats
 }
 
 type TabType = 'overview' | 'listeners'
@@ -33,7 +33,8 @@ function App() {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs: chrome.tabs.Tab[]) => {
       if (tabs[0]?.id) {
         // Ping the content script to see if it's ready
-        chrome.tabs.sendMessage(tabs[0].id, { type: 'PING' })
+        chrome.tabs
+          .sendMessage(tabs[0].id, { type: 'PING' })
           .then((response) => {
             if (response?.ready) {
               setIsReady(true)
@@ -65,13 +66,15 @@ function App() {
         chrome.tabs.sendMessage(tabId, {
           type: 'START_MEMORY_AUDIT',
           interval: 1,
-          threshold: 10
+          threshold: 10,
         })
       } else {
         // Stop audit
-        chrome.tabs.sendMessage(tabId, {
-          type: 'STOP_MEMORY_AUDIT'
-        }).catch(() => {})
+        chrome.tabs
+          .sendMessage(tabId, {
+            type: 'STOP_MEMORY_AUDIT',
+          })
+          .catch(() => {})
       }
     }
 
@@ -82,9 +85,11 @@ function App() {
         // Stop audit when component unmounts
         chrome.tabs.query({ active: true, currentWindow: true }).then((tabs: chrome.tabs.Tab[]) => {
           if (tabs[0]?.id) {
-            chrome.tabs.sendMessage(tabs[0].id, {
-              type: 'STOP_MEMORY_AUDIT'
-            }).catch(() => {})
+            chrome.tabs
+              .sendMessage(tabs[0].id, {
+                type: 'STOP_MEMORY_AUDIT',
+              })
+              .catch(() => {})
           }
         })
       }
@@ -106,39 +111,42 @@ function App() {
 
   return (
     <div className="App">
-
       <header className="header">
         <h1>Memory Leak Detector</h1>
 
-        {stats && (
-          <p className="time-passed">{stats.timePassed}</p>
-        )}
+        {stats && <p className="time-passed">{stats.timePassed}</p>}
       </header>
-      
+
       {error && (
-        <div style={{ padding: '10px', background: '#fee', color: '#c33', borderRadius: '6px', marginBottom: '10px' }}>
+        <div
+          style={{
+            padding: '10px',
+            background: '#fee',
+            color: '#c33',
+            borderRadius: '6px',
+            marginBottom: '10px',
+          }}
+        >
           {error}
         </div>
       )}
-      
-      {!isReady && !error && (
-        <p className='status-message'>Connecting to page...</p>
-      )}
-      
+
+      {!isReady && !error && <p className="status-message">Connecting to page...</p>}
+
       {testsRunning && !stats && isReady && (
-        <p className='status-message'>Initializing detection...</p>
+        <p className="status-message">Initializing detection...</p>
       )}
 
       {stats && (
         <>
           <div className="tabs">
-            <button 
+            <button
               className={`tab ${activeTab === 'overview' ? 'active' : ''}`}
               onClick={() => setActiveTab('overview')}
             >
               Overview
             </button>
-            <button 
+            <button
               className={`tab ${activeTab === 'listeners' ? 'active' : ''}`}
               onClick={() => setActiveTab('listeners')}
             >
@@ -148,7 +156,6 @@ function App() {
 
           {activeTab === 'overview' && (
             <div className="stats-container">
-
               <div className="stats-grid">
                 <div className="stat-card">
                   <h3>Event Listeners</h3>
@@ -199,9 +206,7 @@ function App() {
           )}
 
           {activeTab === 'listeners' && stats?.listenerDetails && (
-            <ListenersDetail 
-              listeners={stats.listenerDetails}
-            />
+            <ListenersDetail listeners={stats.listenerDetails} />
           )}
         </>
       )}

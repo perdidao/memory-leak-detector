@@ -3,7 +3,7 @@
 An **open source** Chrome extension to detect and monitor memory leaks in web pages in real-time.
 
 > 🔓 **Open Source** - This extension is fully open source and its code is available to everyone. Contributions are welcome!
-> 
+>
 > 🔒 **Privacy** - We don't collect, store, or transmit any user data. All analysis is done locally in your browser. See our [Privacy Policy](PRIVACY.md).
 
 ## 🚀 Features
@@ -49,15 +49,35 @@ This extension was designed to help developers identify and fix memory leaks in 
 
 ## 📦 Installation
 
+### Requirements
+
+- **Node.js**: Version 20.19+ or 22.12+ (required by Vite)
+- **npm**: Latest version
+
+To check your Node.js version:
+
+```bash
+node --version
+```
+
+If you need to upgrade Node.js, we recommend using [nvm](https://github.com/nvm-sh/nvm):
+
+```bash
+nvm install 20
+nvm use 20
+```
+
 ### Development
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Build the extension:
+
    ```bash
    npm run build
    ```
@@ -67,6 +87,26 @@ This extension was designed to help developers identify and fix memory leaks in 
    - Enable "Developer mode"
    - Click "Load unpacked"
    - Select the `dist` folder
+
+### Building for Chrome Web Store
+
+When building for submission to Chrome Web Store:
+
+1. Ensure you're using Node.js 20.19+ or 22.12+
+2. Run the build command:
+   ```bash
+   npm run build
+   ```
+3. Verify the `dist` folder contains:
+   - `index.html` (the popup page)
+   - `manifest.json` (extension configuration)
+   - `content/contentScript.js` (content script)
+   - `content/injected.js` (injected script)
+   - `assets/` folder (React app assets)
+   - Icon files (`icon16.png`, `icon48.png`, `icon128.png`)
+
+4. Zip the contents of the `dist` folder (not the folder itself)
+5. Upload to Chrome Web Store
 
 ## 🎯 How to Use
 
@@ -180,14 +220,15 @@ To test if the extension is working:
 1. Open any web page
 2. Open the page console (F12)
 3. Run some commands to create event listeners:
+
    ```javascript
    // Add some listeners
    document.addEventListener('click', () => console.log('click'))
    window.addEventListener('scroll', () => console.log('scroll'))
-   
+
    // Create an interval
    setInterval(() => console.log('interval'), 1000)
-   
+
    // Create an observer
    const observer = new MutationObserver(() => {})
    observer.observe(document.body, { childList: true })

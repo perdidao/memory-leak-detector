@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Memory Leak Detector",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "action": {
     "default_popup": "index.html"
   },
@@ -10,9 +10,7 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "permissions": [
-    "activeTab"
-  ],
+  "permissions": [],
   "host_permissions": [
     "http://*/*",
     "https://*/*"
